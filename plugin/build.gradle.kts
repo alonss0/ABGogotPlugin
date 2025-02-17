@@ -5,20 +5,20 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-val pluginName = "AndroidBluetoothGodotPlugin"
+val pluginName = "BluetoothManagerPlugin"
 
 val pluginPackageName = "org.godotengine.plugin.android.abgp"
 
 android {
     namespace = pluginPackageName
-    compileSdk = 33
+    compileSdk = 35
 
     buildFeatures {
         buildConfig = true
     }
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 33
 
         manifestPlaceholders["godotPluginName"] = pluginName
         manifestPlaceholders["godotPluginPackageName"] = pluginPackageName
@@ -33,10 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+
 }
 
 dependencies {
     implementation("org.godotengine:godot:4.3.0.stable")
+    implementation("androidx.annotation:annotation-jvm:1.9.1")
+    implementation("androidx.core:core:1.15.0")
     // TODO: Additional dependencies should be added to export_plugin.gd as well.
 }
 

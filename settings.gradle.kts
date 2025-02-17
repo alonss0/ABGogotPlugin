@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AndroidBluetoothGodotPlugin"
+rootProject.name = "BluetoothManagerPlugin"
 include(":plugin")
