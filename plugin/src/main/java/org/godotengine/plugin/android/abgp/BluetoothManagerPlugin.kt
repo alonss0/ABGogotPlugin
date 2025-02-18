@@ -9,6 +9,7 @@ import android.bluetooth.le.ScanResult
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Handler
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import org.godotengine.godot.BuildConfig
 import org.godotengine.godot.Godot
@@ -33,6 +34,13 @@ class BluetoothManagerPlugin(godot: Godot) : GodotPlugin(godot) {
     }
 
     override fun getPluginName() = BuildConfig.LIBRARY_PACKAGE_NAME
+
+    @UsedByGodot
+    fun Hello() {
+        godot.getActivity()?.runOnUiThread(Runnable {
+            run { Toast.makeText(godot.getActivity(), "Hello", Toast.LENGTH_LONG).show() }
+        })
+    }
 
     @UsedByGodot
     override fun getPluginMethods(): List<String> {

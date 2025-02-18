@@ -2,7 +2,6 @@ import com.android.build.gradle.internal.tasks.factory.dependsOn
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
 val pluginName = "BluetoothManagerPlugin"
@@ -30,8 +29,16 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+
+    buildTypes {
+        release {
+            buildConfigField("String", "pluginPackageName", "\"org.godotengine.plugin.abgp\"")
+            buildConfigField("String", "pluginName", "\"${pluginName}\"")
+        }
+        debug {
+            buildConfigField("String", "pluginPackageName", "\"org.godotengine.plugin.abgp\"")
+            buildConfigField("String", "pluginName", "\"${pluginName}\"")
+        }
     }
 
 
